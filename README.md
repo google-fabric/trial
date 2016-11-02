@@ -21,10 +21,10 @@ The primary advantage it offers over scientist is that it doesn't by default inc
 Let's say you have two systems that compute metrics.  You are close to cutting over all your production traffic to use the new one, but you still want to make sure your customers aren't impacted if the new system has any unexpected problems or glitches.  Trial lets you try the new system but fall back to the old system if any exceptions happen.
 
 ```ruby
-require 'trial'
+require 'fabric/trial'
 
 class MyWidget
-  include Trial
+  include Fabric::Trial
 
   def compute_metrics
     attempt('new_auth_system') do |attempt|
@@ -37,3 +37,10 @@ end
 ```
 
 It will _only_ run the fallback if the new system has a failure.
+
+## Run tests ##
+
+```
+bundle install
+bundle exec rake
+```

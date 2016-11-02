@@ -1,8 +1,8 @@
 require 'spec_helper'
-require 'trial'
+require 'fabric/trial'
 
-describe Trial do
-  include Trial
+describe Fabric::Trial do
+  include Fabric::Trial
 
   let(:old_system) { double('old_system', :execute => 'old_system') }
   let(:new_system) { double('new_system', :execute => 'new_system') }
@@ -20,8 +20,8 @@ describe Trial do
   before do
     allow(statsd).to receive(:increment).with(anything)
 
-    Trial.default_options[:statsd] = statsd
-    Trial.default_options[:logger] = logger
+    Fabric::Trial.default_options[:statsd] = statsd
+    Fabric::Trial.default_options[:logger] = logger
   end
 
   describe '#attempt' do
